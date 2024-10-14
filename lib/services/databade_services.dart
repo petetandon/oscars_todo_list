@@ -21,7 +21,9 @@ class DatabaseService{
   Future<Database> getDatabase() async {
     final databasaDirPath = await getDatabasesPath();
     final databasePath = join(databasaDirPath, "master_dv.db");
-    final database = await openDatabase(databasePath,
+    final database = await openDatabase(
+        databasePath,
+      version: 1,
       onCreate: (db, version) {
       db.execute(''''
       CREATE TABLE _tasksTableName (
