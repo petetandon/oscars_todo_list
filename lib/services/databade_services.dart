@@ -34,4 +34,12 @@ class DatabaseService{
     );
     return database;
   }
+
+  void addTask(String content,) async {
+    final db = await database;
+    await db.insert(_tasksTableName, {
+    _tasksContentColumnName: content,
+      _tasksStatusColumnName: 0,
+    });
+  }
 }
