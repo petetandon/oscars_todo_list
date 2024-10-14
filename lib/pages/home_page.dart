@@ -15,7 +15,19 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(Object context) {
-    return  Scaffold();
+    return  Scaffold(
+      floatingActionButton: _addTaskButton(),
+    );
   }
+  Widget _addTaskButton() {
+  return FloatingActionButton(onPressed: () {
+    showDialog(context: context, builder: (_) => AlertDialog(
+      title: const Text('Add Task'),
+
+    ),
+    );
+  }, child: const Icon(Icons.add,));
+
+}
 }
 
