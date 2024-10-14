@@ -21,9 +21,21 @@ class _HomePageState extends State<HomePage> {
   }
   Widget _addTaskButton() {
   return FloatingActionButton(onPressed: () {
-    showDialog(context: context, builder: (_) => AlertDialog(
+    showDialog(context: context,
+      builder: (_) => AlertDialog(
       title: const Text('Add Task'),
-
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+            hintText: 'Subscribe...',
+            ),
+          ),
+          MaterialButton(onPressed: () {},)
+        ],
+      ),
     ),
     );
   }, child: const Icon(Icons.add,));
