@@ -27,7 +27,7 @@ class DatabaseService {
       CREATE TABLE $_tasksTableName (
         $_tasksIdColumnName INTEGER PRIMARY KEY,
         $_tasksContentColumnName TEXT NOT NULL,
-        $_tasksStatusColumnName TEXT NOT NULL
+        $_tasksStatusColumnName INTEGER DEFAULT 0
       )
       ''');
     });
