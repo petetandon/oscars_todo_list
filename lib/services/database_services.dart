@@ -6,10 +6,10 @@ class DatabaseService {
   static Database? _db;
   static final DatabaseService instance = DatabaseService._constructor();
 
-  final String _tasksTableName = "tasks";
-  final String _tasksIdColumnName = "id";
-  final String _tasksContentColumnName = "content";
-  final String _tasksStatusColumnName = "status";
+  static final String _tasksTableName = "tasks";
+  static final String _tasksIdColumnName = "id";
+  static final String _tasksContentColumnName = "content";
+  static final String _tasksStatusColumnName = "status";
 
   DatabaseService._constructor();
 
