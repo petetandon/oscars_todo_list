@@ -23,11 +23,11 @@ class DatabaseService {
     final databasePath = join(databaseDirPath, "master_dv.db");
     final database =
         await openDatabase(databasePath, version: 1, onCreate: (db, version) {
-      db.execute(''''
-      CREATE TABLE _tasksTableName (
+      db.execute('''
+      CREATE TABLE $_tasksTableName (
         $_tasksIdColumnName INTEGER PRIMARY KEY,
         $_tasksContentColumnName TEXT NOT NULL,
-        $_tasksStatusColumnName TEXT NOT NULL,
+        $_tasksStatusColumnName TEXT NOT NULL
       )
       ''');
     });
