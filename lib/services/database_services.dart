@@ -52,12 +52,13 @@ class DatabaseService {
   Future<List<Task>> getTasks() async {
     final db = await database;
     final data = await db.query(_tasksTableName);
-    return data
-        .map((e) => Task(
-              id: e["id"] as int,
-              status: e["status"] as int,
-              content: e["content"] as String,
-            ))
-        .toList();
+    return data.map((v) => fromMap(v)).toList();
+  }
+
+  static Task fromMap(Map<String, Object?> map) {
+    int id = map[_tasksIdColumnName] as int;
+    int status = map[_tasksStatusColumnName] as int;
+    String content = map[_tasksContentColumnName] as String;
+    return Task(id: id, status: status, content: content);
   }
 }
