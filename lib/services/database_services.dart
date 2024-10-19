@@ -34,14 +34,19 @@ class DatabaseService {
     return database;
   }
 
-  void addTask(
+  Future<bool> addTask(
     String content,
   ) async {
-    final db = await database;
-    await db.insert(_tasksTableName, {
-      _tasksContentColumnName: content,
-      _tasksStatusColumnName: 0,
-    });
+    try {
+      final db = await database;
+      await db.insert(_tasksTableName, {
+        _tasksContentColumnName: content,
+        _tasksStatusColumnName: 0,
+      });
+      return true;
+    } on Exception {
+      return false;
+    }
   }
 
   Future<List<Task>> getTasks() async {
