@@ -13,7 +13,20 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final DatabaseService _databaseService = DatabaseService.instance;
 
-  String? _task;
+  String _task = "";
+
+  void addNewTask(){
+    String taskName = _task.trim();
+    if (taskName.isEmpty){
+      return;
+    }
+
+    _databaseService.addTask(taskName);
+    setState(() {
+      _task = "";
+    });
+    Navigator.pop(context);
+  }
 
   @override
   Widget build(Object context) {
@@ -47,12 +60,7 @@ class _HomePageState extends State<HomePage> {
                   MaterialButton(
                       color: Theme.of(context).colorScheme.primary,
                       onPressed: () {
-                        if (_task == null || _task == "") return;
-                        _databaseService.addTask(_task!);
-                        setState(() {
-                          _task = null;
-                        });
-                        Navigator.pop(context);
+                        addNewTask();
                       },
                       child: const Text(
                         "Done",
